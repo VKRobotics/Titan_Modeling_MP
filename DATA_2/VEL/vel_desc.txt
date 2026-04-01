@@ -1,0 +1,141 @@
+PDS_VERSION_ID                 = PDS3
+
+RECORD_TYPE                    = FIXED_LENGTH
+RECORD_BYTES                   = 141
+FILE_RECORDS                   = 10000
+LABEL_RECORDS                  = NULL
+DESCRIPTION                    = "Reconstructed probe velocity during descent in 
+                                 Titan fixed spherical coordinates"
+^TABLE                         = "HUY_DTWG_DESCENT_VEL.TAB"
+
+DATA_SET_ID                    = "HP-SSA-DTWG-6-TRAJECTORY-V2.0"
+
+FILE_NAME                      = "HUY_DTWG_DESCENT_VEL.TAB"
+PRODUCT_ID                     = "HUY_DTWG_DESCENT_VEL"
+MISSION_NAME                   = "CASSINI-HUYGENS"
+MISSION_PHASE_NAME             = "ENTRY"
+INSTRUMENT_HOST_NAME           = "HUYGENS PROBE"
+INSTRUMENT_HOST_ID             =  HP
+INSTRUMENT_ID                  = "DTWG"
+INSTRUMENT_TYPE                = "UNK"
+PRODUCT_NAME                   = "HUY_DTWG_DESCENT_VEL"
+PRODUCT_TYPE                   = "DDR"
+TARGET_NAME                    = "TITAN"
+
+START_TIME                     = 2005-01-14T09:11:24.999     
+STOP_TIME                      = 2005-01-14T11:38:10.769   
+
+PRODUCT_CREATION_TIME          = 2006-07-10T00:00:00.000 
+PRODUCER_ID                    = "DTWG_TEAM"
+PRODUCER_FULL_NAME             = "BOBBY KAZEMINEJAD"
+PRODUCER_INSTITUTION_NAME      = "ESA-ESTEC"
+
+OBJECT                         = TABLE
+  INTERCHANGE_FORMAT           = ASCII
+  ROWS                         = 10000
+  COLUMNS                      = 9
+  ROW_BYTES                    = 141
+  DESCRIPTION                  = "N/A"
+
+OBJECT                         = COLUMN
+  COLUMN_NUMBER                = 1
+  NAME                         = ET_EPOCH
+  DATA_TYPE                    = ASCII_REAL
+  START_BYTE                   = 1
+  BYTES                        = 15
+  FORMAT                       = "F13.2"	
+  UNIT                         = SECOND 
+  DESCRIPTION                  = "Ephemeris Time in seconds past J2000"	
+END_OBJECT                     = COLUMN 
+
+
+OBJECT                         = COLUMN
+  COLUMN_NUMBER                = 2
+  NAME                         = ELAPSED_TIME
+  DATA_TYPE                    = ASCII_INTEGER
+  START_BYTE                   = 20
+  BYTES                        = 10
+  FORMAT                       = "N/A"
+  UNIT                         = SECOND 
+  DESCRIPTION                  = "Elapsed time from T0 (initiation of parachute Sequence) 
+                                 in seconds."	
+END_OBJECT                     = COLUMN 
+
+
+OBJECT                         = COLUMN
+     COLUMN_NUMBER             = 3
+     NAME                      = "(MISSION) TIME"
+     UNIT                      = "N/A" 
+     DATA_TYPE                 = TIME
+     START_BYTE                = 34
+     BYTES                     = 23
+     FORMAT                    = A23
+ END_OBJECT                    = COLUMN
+
+OBJECT                         = COLUMN
+     COLUMN_NUMBER             = 4
+     NAME                      = "ATMOSPHERIC PRESSURE"
+     UNIT                      = "MILLIBAR" 
+     DATA_TYPE                 = ASCII_REAL
+     START_BYTE                = 59
+     BYTES                     = 13
+     FORMAT                    = A23
+ END_OBJECT                    = COLUMN
+
+OBJECT                         = COLUMN
+  COLUMN_NUMBER                = 5
+  NAME                         = REF_ALT
+  DATA_TYPE                    = ASCII_REAL
+  START_BYTE                   = 75
+  BYTES                        = 12
+  FORMAT                       = "N/A"  
+  UNIT                         = KILOMETERS 
+  DESCRIPTION                  = "Huygens probe entry altitude with respect to the
+                                  reference sphere of 2575 km from planet center"
+END_OBJECT                     = COLUMN 
+
+OBJECT                         = COLUMN
+  COLUMN_NUMBER                = 6
+  NAME                         = DESC_VEL
+  DATA_TYPE                    = ASCII_REAL
+  START_BYTE                   = 90
+  BYTES                        = 12
+  FORMAT                       = "N/A"  
+  UNIT                         = "METERS PER SECOND" 
+  DESCRIPTION                  = "Descent velocity with respect to 2575 km reference sphere"
+END_OBJECT                     = COLUMN 
+
+OBJECT                         = COLUMN
+     COLUMN_NUMBER             = 7
+     NAME                      = "ATMOSPHERIC_PRESSURE_ERROR"
+     UNIT                      = "MILLIBAR" 
+     DATA_TYPE                 = ASCII_REAL
+     START_BYTE                = 106
+     BYTES                     = 10
+     FORMAT                    = A23
+ END_OBJECT                    = COLUMN
+
+OBJECT                         = COLUMN
+  COLUMN_NUMBER                = 8
+  NAME                         = REF_ALT_ERROR
+  DATA_TYPE                    = ASCII_REAL
+  START_BYTE                   = 118
+  BYTES                        = 10
+  FORMAT                       = "N/A"  
+  UNIT                         = KILOMETER 
+  DESCRIPTION                  = "1-sigma error of probe reference altitude"
+END_OBJECT                     = COLUMN 
+
+OBJECT                         = COLUMN
+  COLUMN_NUMBER                = 9
+  NAME                         = DESC_VEL_ERROR
+  DATA_TYPE                    = ASCII_REAL
+  START_BYTE                   = 130
+  BYTES                        = 10
+  FORMAT                       = "F13.2"	
+  UNIT                         = "METERS PER SECOND"
+  DESCRIPTION                  = "1-sigma error of probe surface altitude"	
+END_OBJECT                     = COLUMN 
+
+END_OBJECT                     = TABLE 
+END
