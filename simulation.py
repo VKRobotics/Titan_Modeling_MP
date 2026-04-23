@@ -6,35 +6,69 @@ import matplotlib.pyplot as plt
 
 V= 6100.0
 gamma = np.radians(-65.0)
-h= 2575000.0
+h= 1270000.0
 t= 0.0
 
-t_list     = [t]
-V_list     = [V]
-gamma_list = [gamma]
-h_list     = [h]
-dt=0.5
-while h>0:
-    V_rate=helper_func.dV_dt(V, gamma, h)
-    gamma_rate=helper_func.dgamma_dt(V, gamma, h)
-    h_rate=helper_func.dh_dt(V, gamma)
-    #Eulers
-    V+=(V_rate*dt) 
+t_list = [t]
+V_list = [V]
+gamma_list=[gamma]
+h_list=[h]
+dt=5
+
+def derivs(V, gamma, h):
+    """Returns (dV/dt, dgamma/dt, dh/dt) at the given state."""
+    return (
+        helper_func.dV_dt(V, gamma, h),
+        helper_func.dgamma_dt(V, gamma, h),
+        helper_func.dh_dt(V, gamma),
+    )
+
+while h > 0:
+    
+    k1V, k1g, k1h = derivs(V, gamma, h)
+
+   
+    k2V, k2g, k2h = derivs(
+        V+ 0.5 * dt * k1V,
+        gamma+0.5 * dt * k1g,
+        h+0.5 * dt * k1h,
+    )
+
+    
+    k3V, k3g, k3h = derivs(
+        V+0.5*dt*k2V,
+        gamma + 0.5*dt*k2g,
+        h     + 0.5 * dt * k2h,
+    )
+
+    
+    k4V, k4g, k4h = derivs(
+        V+dt*k3V,
+        gamma+dt *k3g,
+        h+dt*k3h,
+    )
+
+    # Weighted average: (k1 + 2k2 + 2k3 + k4) / 6
+    V+= (dt / 6.0) * (k1V + 2*k2V + 2*k3V + k4V)
+    gamma+= (dt / 6.0) * (k1g + 2*k2g + 2*k3g + k4g)
+    h+= (dt / 6.0) * (k1h + 2*k2h + 2*k3h + k4h)
+    t+= dt
+
     V_list.append(V)
-    gamma+=(gamma_rate*dt)
     gamma_list.append(gamma)
-    h+=(h_rate*dt)
     h_list.append(h)
-    t+=dt
     t_list.append(t)
-    #ts threshold is set to velocity=0.1m/s
+
     if V < 0.1:
         V = 0.1
         break
+if h_list[-1] < 0:
+    t_list.pop(); V_list.pop(); gamma_list.pop(); h_list.pop()
 t_arr=np.array(t_list)
 V_arr=np.array(V_list)
 gamma_arr=np.degrees(np.array(gamma_list))
 h_arr=np.array(h_list)/1000
+
 
 
 
