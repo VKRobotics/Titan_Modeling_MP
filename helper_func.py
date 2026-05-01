@@ -24,13 +24,19 @@ def cda(h,V):
         return cd*constants.A_CAP
         
     elif h > constants.H_DEPLOY_DROGUE:
-        return cd*(constants.A_CAP + 54.1)   # main parachute open
+        return cd*(constants.A_CAP + 54.1)   
     else:
-        return cd *(constants.A_CAP+7.1)   # drogue / stabiliser
+        return cd *(constants.A_CAP+2.7)   
     
-
+def MASS_P(h):
+    if h > 155000:
+        return 320
+    elif h > 150000:
+        return 290
+    else:
+        return 210
 def dV_dt(V, gamma, h):
-    drag   = (p_density(h) * cda(h,V) * V**2) / (2 * constants.MASS_P)
+    drag   = (p_density(h) * cda(h,V) * V**2) / (2 * MASS_P(h))
     grav   = g_accel(h) * np.sin(gamma)
     return -drag + grav
 def dgamma_dt(V, gamma, h):
