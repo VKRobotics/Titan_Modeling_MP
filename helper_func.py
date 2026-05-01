@@ -41,7 +41,7 @@ def dh_dt(V, gamma):
     return -V * np.sin(gamma)
 
 
-atmo_data=pd.read_csv("compiled_data.csv")
+atmo_data=pd.read_csv("compiled_entry_data.csv")
 altitude=(atmo_data['ref_alt (kilometers)'].values*1000.0)[::-1]
 speed_sound=atmo_data['speed_of_sound (m/s)'].values[::-1]
 

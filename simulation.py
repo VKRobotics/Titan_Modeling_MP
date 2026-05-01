@@ -80,7 +80,7 @@ h_arr=np.array(h_list)/1000
 
 
 import pandas as pd
-entry_data   = pd.read_csv('compiled_data.csv')
+entry_data   = pd.read_csv('compiled_entry_data.csv')
 descent_data = pd.read_csv('compiled_descent_data.csv')
 
 # Use entry data start as t=0 reference
