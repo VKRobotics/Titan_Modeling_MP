@@ -238,7 +238,7 @@ interp_h_descent = np.interp(descent_t_min, t_sim_descent, h_sim_descent)
 rmse_h_entry = calculate_rmse(interp_h_entry, entry_h_km)
 rmse_h_descent = calculate_rmse(interp_h_descent, descent_h_km)
 
-print("RMSE Entry Altitude: "+str(rmse_h_entry)+"km RMSE Descent Altitude"+str(rmse_h_descent)+"km")
+print("RMSE Entry Altitude: "+str(rmse_h_entry)+"km RMSE Descent Altitude "+str(rmse_h_descent)+"km")
 
 
 

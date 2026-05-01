@@ -10,20 +10,17 @@ def p_density(h):
 def g_accel(h):
     return constants.G * constants.MASS_T / (constants.RAD_T + h)**2
 def cda(h,V):
-    if h > constants.H_DEPLOY_MAIN:
-        c=speed_sound_interpol(h)
-        mach=V/c
-        if mach<=0.5:
-            return 0.93*constants.A_CAP
-        elif mach<=1.5:
-            cd=0.93+0.55*((3*(mach-0.5)**2)-2*(mach-0.5)**3)
-            return cd*constants.A_CAP
-        else:
-            return 1.48*constants.A_CAP
-    elif h > constants.H_DEPLOY_DROGUE:
-        return constants.CDA_PHASE1   # main parachute open
+
+    c=speed_sound_interpol(h)
+    mach=V/c
+    if mach<=0.5:
+        return 0.93*constants.A_CAP
+    elif mach<=1.5:
+        cd=0.93+0.55*((3*(mach-0.5)**2)-2*(mach-0.5)**3)
+        return cd*constants.A_CAP
     else:
-        return constants.CDA_PHASE2   # drogue / stabiliser
+        return 1.48*constants.A_CAP
+    
     
 
 def dV_dt(V, gamma, h):
